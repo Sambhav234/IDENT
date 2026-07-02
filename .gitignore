@@ -22,10 +22,6 @@ uploads/
 .DS_Store
 Thumbs.db
 
-# Model artifacts and large local data
-model.joblib
-*.joblib
-
 # Jupyter / notebooks
 .ipynb_checkpoints/
 

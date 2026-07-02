@@ -5,3 +5,5 @@ opencv-python-headless
 scikit-learn
 joblib
 gunicorn
+torch
+torchvision
