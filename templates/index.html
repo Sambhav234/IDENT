@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IDENT - Real vs Fake Image Detector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      width: min(90vw, 720px);
+      background: rgba(15, 23, 42, 0.92);
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    h1 { margin-top: 0; }
+    form { display: grid; gap: 12px; }
+    input[type="file"] {
+      background: #334155;
+      border: 1px solid #64748b;
+      border-radius: 10px;
+      padding: 10px;
+      color: white;
+    }
+    button {
+      padding: 12px 16px;
+      border: none;
+      border-radius: 10px;
+      background: #22c55e;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #1e293b;
+      border: 1px solid #475569;
+    }
+    .real { color: #4ade80; }
+    .fake { color: #f87171; }
+    .error { color: #fca5a5; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>IDENT - Real or Fake Image Detector</h1>
+    <p>Upload an image and the system will predict whether it looks like a real phone-captured photo or a screen-captured fake.</p>
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required>
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if error %}
+      <div class="result error">{{ error }}</div>
+    {% endif %}
+
+    {% if result %}
+      <div class="result">
+        <h2 class="{{ result.label.lower() }}">Prediction: {{ result.label }}</h2>
+        <p><strong>File:</strong> {{ result.filename }}</p>
+        <p><strong>Fake score:</strong> {{ result.score }}</p>
+        <p><strong>Confidence:</strong> {{ result.confidence }}</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

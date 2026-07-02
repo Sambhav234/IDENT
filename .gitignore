@@ -1,0 +1,35 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment files
+.env
+.env.*
+
+# Uploads and runtime artifacts
+uploads/
+*.log
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Model artifacts and large local data
+model.joblib
+*.joblib
+
+# Jupyter / notebooks
+.ipynb_checkpoints/
+
+# Testing artifacts
+.pytest_cache/
+.coverage
+htmlcov/
